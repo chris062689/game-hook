@@ -64,4 +64,4 @@ _See the /data/clients folder for more information on how to write your own._
 
 
 > Program your own scripts to interact with your favorite games!
-![Image](https://i.imgur.com/npS7YTV.png | width=800)
+![Image](https://i.imgur.com/HC6z4Yz.png | width=800)
