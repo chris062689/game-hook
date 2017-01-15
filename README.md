@@ -28,16 +28,15 @@ There are example scripts and clients included.
     - **Pokemon Sidebar** - A sidebar used for video game streamers and Pokemon. Will display common information about the Pokemon game you are playing as a sidebar that can easily integrate into OBS or Xsplit.
 - **Example Scripts** - Inside of the /data/scripts folder, you can see examples for:
     - **Pokemon Red / Blue Nuzlocke Mode** - A script that enforces "Nuzlocke" rules from Pokemon. This enforces all main Nuzlocke rules automatically including: Disallow use of "dead" Pokemon, disallow captures after first encounters per Route.
-    - **Pokemon Red / Blue Text** - A script that shows how to modify the ROM to change certain menu options.
-    - **Dragon Warrior 1 Stats** - A script that changes your stats for Dragon Warrior 1. Also detects when you stand on chests, stairs, etc.
+
 
 ## How do I set up my config?
-Within the GameHook folder, open up `settings.js`.
+Within the GameHook folder, open up `/config/config.js`.
 There are the following options available:
 - **Log Level** - Indicates the amount of logging that should be done. Useful for debugging.
     - Default Value: `'info'`
 - **Driver File** - The path to the driver
-    - Default Value: `'./drivers/RetroArch.js'`
+    - Default Value: `'./lib/drivers/RetroArch.js'`
 - **Mapper File** - The path to the mapper
     - Example: `'./data/mappers/PokemonRedBlue_GBC.js'`)
 - **Scripts** - A list of scripts to automatically be ran.
@@ -45,10 +44,10 @@ There are the following options available:
 
 An example configuration would like like this:
 ```
-exports.log_level = 'info';
-exports.driver_file = './drivers/retroarch.js';
-exports.mapper_file = './data/mappers/pokemon_rby.json';
-exports.scripts = ['./data/scripts/pokemon_rby_nuzlocke.js'];
+exports.logLevel = 'info';
+exports.driverFile = './lib/drivers/RetroArch.js';
+exports.gameFile = './data/mappers/PokemonRedBlue_GBC.js';
+exports.scripts = ['./data/scripts/PokemonRedBlue_GBC_Nuzlocke.js'];
 ```
 
 ## Technical Information
