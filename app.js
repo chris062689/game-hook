@@ -1,5 +1,7 @@
 const logger = require('winston');
 const express = require('express');
+const bodyParser = require('body-parser');
+const objectPath = require("object-path");
 const fs = require('fs');
 const path = require('path');
 const Promise = require("bluebird");
@@ -22,7 +24,7 @@ gameState.init(driver).then(function() {
     logger.info('[GameState] Established connection to emulator.');
 }).error(function(err) {
     logger.warn('[GameState] Failed to connect to driver. Is your emulator running?');
-    logger.error(err);
+    logger.error(err);var objectPath = require("object-path");
 }).then(function() {
     /* Initalize Script Engine. */
     config.scripts.forEach(function(script) {
@@ -36,6 +38,7 @@ gameState.init(driver).then(function() {
 }).then(function() {
     /* Initalize API Endpoint */
     var website = express();
+    website.use(bodyParser.json());
     website.use(function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -43,12 +46,24 @@ gameState.init(driver).then(function() {
     });
 
     website.get('/', function(req, res) {
-        gameState.getAllProperties().then(function() {
-            res.setHeader('Content-Type', 'application/json');
-            res.send(JSON.stringify(gameState, null, 3));
-        }).catch(function(ex) {
-            console.log(ex);
-        });
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify(gameState, null, 3));
+    });
+
+    website.patch('/', function(req, res) {
+      let property = objectPath.get(gameState, req.body.property);
+      if (property) {
+        if (req.body.type == 'hex') {
+          property.setHex(req.body.value);
+          res.send({ result: true });
+        } else {
+          // Request type was unimplemented.
+          res.send(501);
+        }
+      } else {
+        // Property was not found.
+        res.send(404);
+      }
     });
 
     var server = website.listen(5000, function() {

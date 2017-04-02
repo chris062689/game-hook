@@ -7,8 +7,10 @@
   "main": "app.js",
   "dependencies": {
     "bluebird": "^3.4.7",
+    "body-parser": "^1.17.1",
     "dgram": "^1.0.1",
     "express": "^4.14.0",
+    "object-path": "^0.11.4",
     "winston": "^2.2.0"
   },
   "preferGlobal": false,
