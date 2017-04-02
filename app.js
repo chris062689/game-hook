@@ -1,15 +1,17 @@
-var logger = require('winston');
-var express = require('express');
-var fs = require('fs');
-var path = require('path');
-var Promise = require("bluebird");
+const logger = require('winston');
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
+const Promise = require("bluebird");
 
-var config = require('./config/config.js');
+const config = require('./config/config.js');
 
 logger.level = config.logLevel;
 logger.add(logger.transports.File, {
     filename: 'game-hook.log'
 });
+
+global.__lib = `${__dirname}/lib/`;
 
 /* Initalize GameState */
 var gameState = require(config.gameFile);
