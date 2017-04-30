@@ -20,16 +20,19 @@ var gameState = require(config.gameFile);
 var driver = require(config.driverFile);
 var scripts = [];
 
+logger.info(`[GameState] Loaded driver: ${path.basename(config.driverFile, '.js')}`);
+logger.info(`[GameState] Loaded mapper: ${path.basename(config.gameFile, '.js')}`);
+
 gameState.init(driver).then(function() {
     logger.info('[GameState] Established connection to emulator.');
 }).error(function(err) {
     logger.warn('[GameState] Failed to connect to driver. Is your emulator running?');
-    logger.error(err);var objectPath = require("object-path");
+    logger.error(err);
 }).then(function() {
     /* Initalize Script Engine. */
     config.scripts.forEach(function(script) {
         var scriptName = path.basename(script, '.js');
-        logger.info('[SCRIPT] Loaded script: %s', scriptName);
+        logger.info('[Script] Loaded script: %s', scriptName);
         scripts.push({
             name: scriptName,
             script: require(script)
@@ -69,7 +72,7 @@ gameState.init(driver).then(function() {
     var server = website.listen(5000, function() {
         var host = server.address().address;
         var port = server.address().port;
-        logger.info('[WEB] API Endpoint accessible at http://127.0.0.1:%s/', port);
+        logger.info('[Web API] API Endpoint accessible at http://127.0.0.1:%s/', port);
     });
     /* End API Endpoints */
 }).then(function() {
@@ -87,4 +90,6 @@ gameState.init(driver).then(function() {
         });
         setTimeout(arguments.callee, 1000);
     })();
+}).error(function(err) {
+  logger.error(err);
 });
