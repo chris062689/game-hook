@@ -13,6 +13,9 @@
     "object-path": "^0.11.4",
     "winston": "^2.2.0"
   },
+  "scripts": {
+    "start": "node server.js"
+  },
   "preferGlobal": false,
   "private": true,
   "license": "GPLv3"
