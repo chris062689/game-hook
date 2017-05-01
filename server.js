@@ -20,8 +20,8 @@ var gameState = require(config.gameFile);
 var driver = require(config.driverFile);
 var scripts = [];
 
-logger.info(`[GameState] Loaded driver: ${path.basename(config.driverFile, '.js')}`);
-logger.info(`[GameState] Loaded mapper: ${path.basename(config.gameFile, '.js')}`);
+logger.info(`[GameState] Loaded driver: ${config.driverFile}`);
+logger.info(`[GameState] Loaded mapper: ${config.gameFile}`);
 
 gameState.init(driver).then(function() {
     logger.info('[GameState] Established connection to emulator.');
@@ -31,8 +31,7 @@ gameState.init(driver).then(function() {
 }).then(function() {
     /* Initalize Script Engine. */
     config.scripts.forEach(function(script) {
-        var scriptName = path.basename(script, '.js');
-        logger.info('[Script] Loaded script: %s', scriptName);
+        logger.info('[Script] Loaded script: %s', script);
         scripts.push(require(script));
     });
 }).then(function() {
