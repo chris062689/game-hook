@@ -1,3 +1,6 @@
+savefiles/*
+!savefiles/_deleteme.txt
+
 # Logs
 logs
 *.log

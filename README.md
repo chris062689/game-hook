@@ -3,7 +3,7 @@ GameHook allows you to fetch information in any game you are currently playing f
 
 > GameHook is still in early stages of development!
 
-![Image](https://i.imgur.com/PP4qJEo.png | width=800)
+![Image](https://i.imgur.com/PP4qJEo.png)
 
 ## How do I get it?
 ```git clone --recursive https://github.com/chris062689/game-hook.git```
@@ -18,7 +18,7 @@ GameHook allows you to fetch information in any game you are currently playing f
 3. Open RetroArch, set Network CMD Enable to true within Settings.
 4. Start your game using a compatable core.
 5. Apply the example configuration below, or your own based on the game you'd like to use.
-6. Start the GameHook server `node main.js` and verify it has connected to the driver.
+6. Start the GameHook server `npm start` and verify it has connected to the driver.
 7. Open an approperate client _(inside the /data/clients folder, often an HTML file.)_
 
 ## What are some examples of what GameHook do?
@@ -40,14 +40,14 @@ There are the following options available:
 - **Mapper File** - The path to the mapper
     - Example: `'./data/mappers/PokemonRedBlue_GBC.js'`)
 - **Scripts** - A list of scripts to automatically be ran.
-    - Example: `['./data/scripts/PokemonRedBlue_GBC_Nuzlocke.js']`
+    - Example: `['./data/scripts/PokemonNuzlocke.js']`
 
 An example configuration would like like this:
 ```
 exports.logLevel = 'info';
 exports.driverFile = './lib/drivers/RetroArch.js';
 exports.gameFile = './data/mappers/PokemonRedBlue_GBC.js';
-exports.scripts = ['./data/scripts/PokemonRedBlue_GBC_Nuzlocke.js'];
+exports.scripts = ['./data/scripts/PokemonNuzlocke.js'];
 ```
 
 ## Technical Information
@@ -64,4 +64,4 @@ _See the /data/clients folder for more information on how to write your own._
 
 
 > Program your own scripts to interact with your favorite games!
-![Image](https://i.imgur.com/HC6z4Yz.png | width=800)
+![Image](https://i.imgur.com/HC6z4Yz.png)
