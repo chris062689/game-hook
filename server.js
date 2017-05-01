@@ -33,10 +33,7 @@ gameState.init(driver).then(function() {
     config.scripts.forEach(function(script) {
         var scriptName = path.basename(script, '.js');
         logger.info('[Script] Loaded script: %s', scriptName);
-        scripts.push({
-            name: scriptName,
-            script: require(script)
-        });
+        scripts.push(require(script));
     });
 }).then(function() {
     /* Initalize API Endpoint */
@@ -84,8 +81,9 @@ gameState.init(driver).then(function() {
     (function() {
         gameState.getAllProperties().then(function() {
             gameState.scripts = {};
+
             scripts.forEach(function(module) {
-                gameState.scripts[module.name] = new module.script(gameState);
+                gameState.scripts[module.name] = module.run(gameState);
             });
         });
         setTimeout(arguments.callee, 1000);
