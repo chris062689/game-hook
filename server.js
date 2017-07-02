@@ -65,7 +65,7 @@ gameState.init(driver).then(function() {
       }
     });
 
-    var server = website.listen(5000, function() {
+    var server = website.listen(5123, function() {
         var host = server.address().address;
         var port = server.address().port;
         logger.info('[Web API] API Endpoint accessible at http://127.0.0.1:%s/', port);
