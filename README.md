@@ -16,10 +16,10 @@ GameHook allows you to fetch information in any game you are currently playing f
 1. Download and install [Node.js](https://nodejs.org/), and reboot before proceeding with the remaining steps.
 2. Download and install [RetroArch](http://www.libretro.com/index.php/retroarch-2/).
 3. Open RetroArch, set Network CMD Enable to true within Settings.
-4. Start your game using a compatable core.
+4. Start your game using a compatible core.
 5. Apply the example configuration below, or your own based on the game you'd like to use.
 6. Start the GameHook server `npm start` and verify it has connected to the driver.
-7. Open an approperate client _(inside the /data/clients folder, often an HTML file.)_
+7. Open an appropriate client _(inside the /data/clients folder, often an HTML file.)_
 
 ## What are some examples of what GameHook do?
 
@@ -28,6 +28,7 @@ There are example scripts and clients included.
     - **Pokemon Sidebar** - A sidebar used for video game streamers and Pokemon. Will display common information about the Pokemon game you are playing as a sidebar that can easily integrate into OBS or Xsplit.
 - **Example Scripts** - Inside of the /data/scripts folder, you can see examples for:
     - **Pokemon Red / Blue Nuzlocke Mode** - A script that enforces "Nuzlocke" rules from Pokemon. This enforces all main Nuzlocke rules automatically including: Disallow use of "dead" Pokemon, disallow captures after first encounters per Route.
+    - **Pokemon Red / Blue Shiny Checker** - A script that determines if the Pokemon you are fighting is a shiny.
 
 
 ## How do I set up my config?
@@ -40,14 +41,14 @@ There are the following options available:
 - **Mapper File** - The path to the mapper
     - Example: `'./data/mappers/PokemonRedBlue_GBC.js'`)
 - **Scripts** - A list of scripts to automatically be ran.
-    - Example: `['./data/scripts/PokemonNuzlocke.js']`
+    - Example: `['./data/scripts/PokemonNuzlocke.js', './data/scripts/PokemonShinyDetect.js']`
 
 An example configuration would like like this:
 ```
 exports.logLevel = 'info';
 exports.driverFile = './lib/drivers/RetroArch.js';
 exports.gameFile = './data/mappers/PokemonRedBlue_GBC.js';
-exports.scripts = ['./data/scripts/PokemonNuzlocke.js'];
+exports.scripts = ['./data/scripts/PokemonNuzlocke.js', './data/scripts/PokemonShinyDetect.js'];
 ```
 
 ## Technical Information
