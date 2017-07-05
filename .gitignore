@@ -1,5 +1,7 @@
-savefiles/*
-!savefiles/_deleteme.txt
+data/*
+!data/_deleteme.txt
+
+assets
 
 # Logs
 logs

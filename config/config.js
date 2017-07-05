@@ -1,4 +1,4 @@
 exports.logLevel = 'info';
-exports.driverFile = './lib/drivers/RetroArch.js';
-exports.gameFile = './data/mappers/PokemonRedBlue_GBC.js';
-exports.scripts = ['./data/scripts/PokemonNuzlocke.js', './data/scripts/PokemonShinyDetect.js'];
+exports.driverFile = 'RetroArch.js';
+exports.gameFile = 'PokemonRedBlue_GBC.js';
+exports.scripts = ['PokemonNuzlocke.js', 'PokemonShinyDetect.js'];
