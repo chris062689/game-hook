@@ -13,6 +13,9 @@ global.__lib_core = __dirname + '/lib/core';
 global.__lib_drivers = __dirname + '/lib/drivers';
 global.__lib_types = __dirname + '/lib/types';
 
-console.log(__dirname);
+const logger = require(`${global.__lib}/logger.js`);
+
+const assets = require(`${global.__lib}/assets.js`)
+assets.updateAssets();
 
 require(`${__lib}/server.js`);
