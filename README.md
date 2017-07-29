@@ -6,11 +6,12 @@ GameHook allows you to fetch information in any game you are currently playing f
 ![Image](https://i.imgur.com/PP4qJEo.png)
 
 ## How do I get it?
-```git clone --recursive https://github.com/chris062689/game-hook.git```
-
+```git clone https://github.com/chris062689/game-hook.git```
 ```cd game-hook && npm update```
+
 ## How do I check for updates?
-```git pull --recurse-submodules```
+1. Download the assets located here: https://github.com/chris062689/game-hook-assets
+2. Extract the folders: mappers, scripts inside of the `/game-hook/assets/` folder (if this folder does not exist you must create it.)
 
 ## Quick-Start Guide
 1. Download and install [Node.js](https://nodejs.org/), and reboot before proceeding with the remaining steps.
@@ -19,14 +20,14 @@ GameHook allows you to fetch information in any game you are currently playing f
 4. Start your game using a compatible core.
 5. Apply the example configuration below, or your own based on the game you'd like to use.
 6. Start the GameHook server `npm start` and verify it has connected to the driver.
-7. Open an appropriate client _(inside the /data/clients folder, often an HTML file.)_
+7. Open an appropriate client _(inside the /assets/clients folder, often an HTML file.)_
 
 ## What are some examples of what GameHook do?
 
 There are example scripts and clients included.
-- **Example Clients** - Inside of the /data/clients folder, clients are typically HTML files. You can see examples for:
+- **Example Clients** - Inside of the /assets/clients folder, clients are typically HTML files. You can see examples for:
     - **Pokemon Sidebar** - A sidebar used for video game streamers and Pokemon. Will display common information about the Pokemon game you are playing as a sidebar that can easily integrate into OBS or Xsplit.
-- **Example Scripts** - Inside of the /data/scripts folder, you can see examples for:
+- **Example Scripts** - Inside of the /assets/scripts folder, you can see examples for:
     - **Pokemon Red / Blue Nuzlocke Mode** - A script that enforces "Nuzlocke" rules from Pokemon. This enforces all main Nuzlocke rules automatically including: Disallow use of "dead" Pokemon, disallow captures after first encounters per Route.
     - **Pokemon Red / Blue Shiny Checker** - A script that determines if the Pokemon you are fighting is a shiny.
 
@@ -37,18 +38,18 @@ There are the following options available:
 - **Log Level** - Indicates the amount of logging that should be done. Useful for debugging.
     - Default Value: `'info'`
 - **Driver File** - The path to the driver
-    - Default Value: `'./lib/drivers/RetroArch.js'`
+    - Default Value: `'RetroArch.js'`
 - **Mapper File** - The path to the mapper
-    - Example: `'./data/mappers/PokemonRedBlue_GBC.js'`)
+    - Example: `'PokemonRedBlue_GBC.js'`)
 - **Scripts** - A list of scripts to automatically be ran.
-    - Example: `['./data/scripts/PokemonNuzlocke.js', './data/scripts/PokemonShinyDetect.js']`
+    - Example: `['PokemonNuzlocke.js', 'PokemonShinyDetect.js']`
 
 An example configuration would like like this:
 ```
 exports.logLevel = 'info';
-exports.driverFile = './lib/drivers/RetroArch.js';
-exports.gameFile = './data/mappers/PokemonRedBlue_GBC.js';
-exports.scripts = ['./data/scripts/PokemonNuzlocke.js', './data/scripts/PokemonShinyDetect.js'];
+exports.driverFile = 'RetroArch.js';
+exports.gameFile = 'PokemonRedBlue_GBC.js';
+exports.scripts = ['PokemonNuzlocke.js', 'PokemonShinyDetect.js'];
 ```
 
 ## Technical Information
@@ -61,7 +62,7 @@ The GameHook server exports a live-feed of your game through a Web API / JSON.
 
 ### Internal Components of the GameHook Client:
 Because the GameHook server is served through Web API / JSON, any Web API enabled platform can leverage the GameHook server.
-_See the /data/clients folder for more information on how to write your own._
+_See the /assets/clients folder for more information on how to write your own._
 
 
 > Program your own scripts to interact with your favorite games!
